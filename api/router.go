@@ -34,13 +34,13 @@ func HandlerGinEngine(w http.ResponseWriter, r *http.Request) {
 // V1Cors 跨域中间件
 func V1Cors(c *gin.Context) {
 	// 允许跨域
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Origin", "*") // 删除重复的设置
 	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 	c.Writer.Header().Set("Access-Control-Allow-Headers", "Token, Content-Type, Accept")
 	c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	// 如果是OPTIONS请求，直接返回
 	if c.Request.Method == "OPTIONS" {
-		c.AbortWithStatus(204)
+		c.AbortWithStatus(http.StatusNoContent) // 使用http.StatusNoContent代替204
 		return
 	}
 	c.Next()
