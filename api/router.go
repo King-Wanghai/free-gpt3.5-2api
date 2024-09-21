@@ -33,16 +33,21 @@ func HandlerGinEngine(w http.ResponseWriter, r *http.Request) {
 
 // V1Cors 跨域中间件
 func V1Cors(c *gin.Context) {
-	// 允许跨域
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*") // 删除重复的设置
-	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
-	c.Writer.Header().Set("Access-Control-Allow-Headers", "Token, Content-Type, Accept")
+        origin := c.Request.Header.Get("Origin")
+
+        // 动态设置允许的 Origin，允许所有域名
+        if origin != "" {
+            c.Writer.Header().Set("Access-Control-Allow-Origin", origin)
+	}
+	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")           // 如果需要传递Cookie，设置为true
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Token, Content-Type, Accept, Authorization")
 	c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-	// 如果是OPTIONS请求，直接返回
+
 	if c.Request.Method == "OPTIONS" {
-		c.AbortWithStatus(http.StatusNoContent) // 使用http.StatusNoContent代替204
+		c.AbortWithStatus(http.StatusNoContent)
 		return
 	}
+
 	c.Next()
 }
 
