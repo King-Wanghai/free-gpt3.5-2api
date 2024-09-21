@@ -35,7 +35,6 @@ func HandlerGinEngine(w http.ResponseWriter, r *http.Request) {
 func V1Cors(c *gin.Context) {
 	// 允许跨域
 	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 	c.Writer.Header().Set("Access-Control-Allow-Headers", "Token, Content-Type, Accept")
 	c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
