@@ -21,7 +21,7 @@ jobs:
       - name: Get Docker Image Tag
         shell: bash
         id: get_docker_image_tag
-        run: echo "tag=$(echo $GITHUB_REF | sed 's|refs/tags/release-v||')" >> $GITHUB_OUTPUT
+        run: echo "tag=$(echo $GITHUB_REF | sed 's|refs/tags/release-v||; s|/|-|g')" >> $GITHUB_OUTPUT  # 替换斜杠为短横线
 
       - name: Set Up QEMU
         uses: docker/setup-qemu-action@v3
