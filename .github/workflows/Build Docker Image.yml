@@ -53,8 +53,6 @@ jobs:
           file: Dockerfile
           tags: |
             ${{ env.DOCKER_HUB_REPO }}:latest
-            ${{ env.DOCKER_HUB_REPO }}:${{ steps.get_docker_image_tag.outputs.tag }}
-            ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
