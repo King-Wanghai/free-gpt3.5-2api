@@ -14,7 +14,7 @@ func MappingModel(model string) string {
 		"gpt-3.5-turbo-0613":     "text-davinci-002-render-sha",
 		"gpt-3.5-turbo-1106":     "text-davinci-002-render-sha",
 		"gpt-4o":                 "gpt-4o",
-		"gpt-4o-mini":            "gpt-4o-mini"
+		"gpt-4o-mini":            "gpt-4o-mini",
 		"auto":                   "auto",
 		"gpt-4o-av":              "gpt-4o-av",
 	}
