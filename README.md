@@ -44,16 +44,10 @@ mkdir -p $PWD/free-gpt3.5-2api
 ##### 2.拉取镜像启动
 
 ```
-docker run -itd  --name=free-gpt3.5-2api -e AUTHORIZATIONS=abc,bac -p 9846:3040 ghcr.io/aurorax-neo/free-gpt3.5-2api
+docker run -itd  --name=free-gpt3.5-2api -e AUTHORIZATIONS=abc,bac -p 9846:3040 qwezxcjkl/free-gpt3.5-2api
 ```
 
 ###### 注意：-e AUTHORIZATIONS=abc,bac 请自行修改，避免接口被刷
-
-##### 3.更新容器
-
-```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower -cR free-gpt3.5-2api --debug
-```
 
 ### 2.Vercel部署
 
